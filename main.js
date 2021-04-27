@@ -20,7 +20,7 @@ function addTransaction(e) {
 
     if (text.value.trim() === "" || amount.value.trim() === "") {
         document.getElementById("error_msg").innerHTML =
-            "<span >Error: Please enter description and amount!</span>";
+            "<span>Error: Please enter Transaction Name and Amount!</span>";
         setTimeout(
             () => (document.getElementById("error_msg").innerHTML = ""),
             5000

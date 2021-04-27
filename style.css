@@ -74,4 +74,23 @@ input[type=submit]:hover {
 hr{
     border-top: 1px solid #d8d8d8;
 }
+.error{
+    color: red;
+    font-size: 16px;
+    text-align: center;
+}
+.minus:hover{
+    width: 50%;
+    background-color: rgb(239, 206, 180);
+    cursor: pointer;
+
+}
+
+.plus:hover {
+    width: 50%;
+    background-color: rgb(181, 232, 175);
+    cursor: pointer;
+}
+
+
 
