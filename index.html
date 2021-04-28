@@ -26,8 +26,24 @@
         </div>
     </div>
     <div>
-        <p>History</p>
-        <ol id="list" class="list"></ol>
+        <p class="tooltip center">History
+            <sub class="tooltiptext"><span class="sign-btn">+</span>=> income<br><br>
+                <span class="sign-btn">-</span>=> expense</sub>
+        </p>
+<!--        <ol id="list" class="list"></ol>-->
+        <table class="hide" id="table">
+            <thead>
+                <tr>
+                    <th>Delete</th>
+                    <th>Transaction Name</th>
+                    <th>+/-</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            </tbody>
+
+        </table>
     </div>
     <hr>
     <div>

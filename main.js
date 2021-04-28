@@ -1,10 +1,12 @@
 const balance = document.getElementById("balance");
 const inflow = document.getElementById("income");
 const outflow = document.getElementById("expense");
-const list = document.getElementById("list");
+const tbody = document.getElementById("tbody");
 const form = document.getElementById("form");
 const text = document.getElementById("text");
 const amount = document.getElementById("amount");
+const table = document.getElementById("table");
+
 
 // Get transactions from local storage
 const localStorageTransactions = JSON.parse(
@@ -14,16 +16,17 @@ const localStorageTransactions = JSON.parse(
 let transactions =
     localStorage.getItem("transactions") !== null ? localStorageTransactions : [];
 
+
 // Add transaction
 function addTransaction(e) {
     e.preventDefault();
 
     if (text.value.trim() === "" || amount.value.trim() === "") {
         document.getElementById("error_msg").innerHTML =
-            "<span>Error: Please enter Transaction Name and Amount!</span>";
+            "<span class='error-style fade-in-text'>Please enter Transaction Name and Amount!</span>";
         setTimeout(
             () => (document.getElementById("error_msg").innerHTML = ""),
-            5000
+            7000
         );
     } else {
         const transaction = {
@@ -55,25 +58,29 @@ function addTransactionDOM(transaction) {
     // Get sign
     const sign = transaction.amount < 0 ? "-" : "+";
 
-    const item = document.createElement("li");
+    // const item = document.createElement("li");
+    const item = document.createElement("tr");
 
-    // Add class based on value
-    item.classList.add(transaction.amount < 0 ? "minus" : "plus");
+
 
     item.innerHTML = `
-    <button class="delete-btn" onclick="removeTransaction(${
+    <td><span class="delete-btn" onclick="removeTransaction(${
         transaction.id
-    })">X</button>
-    ${transaction.text} ${sign}${Math.abs(
+    })">X</span></td>
+    <td>${transaction.text}</td> <td>${sign}</td><td>${Math.abs(
         transaction.amount
-    )} 
+    )}</td> 
   `;
 
-    list.appendChild(item);
+    tbody.appendChild(item);
+    table.classList.remove("hide");
+    table.classList.add("show");
+
 }
 
 // Update the balance, inflow and outflow
 function updateValues() {
+
     const amounts = transactions.map((transaction) => transaction.amount);
 
     const total = amounts.reduce((bal, value) => (bal += value), 0).toFixed(2);
@@ -96,6 +103,9 @@ function updateValues() {
 // Remove transaction by ID
 function removeTransaction(id) {
     transactions = transactions.filter((transaction) => transaction.id !== id);
+    table.classList.remove("show");
+    table.classList.add("hide");
+
 
     updateLocalStorage();
 
@@ -109,9 +119,10 @@ function updateLocalStorage() {
 
 // Start app
 function start() {
-    list.innerHTML = "";
+    tbody.innerHTML = "";
     transactions.forEach(addTransactionDOM);
     updateValues();
+
 }
 
 start();
