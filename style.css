@@ -18,7 +18,7 @@ body{
     padding: 10px;
     position: absolute;
     left: 35%;
-    top: 5%;
+    top: 5px;
     width: 500px;
 
 }
@@ -255,8 +255,10 @@ tr:nth-child(odd) td{
 .show{
     visibility: visible;
 }
-
-
+.scroll{
+    overflow-y:auto;
+    max-height: 200px;
+}
 
 
 
