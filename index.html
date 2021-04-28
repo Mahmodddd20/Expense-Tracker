@@ -11,14 +11,15 @@
     <h1 class="center">Expense Tracker</h1>
     <div>
         <h3>YOUR BALANCE <br>
-        <span id="balance">$0.00</span>
+            <span id="balance">$0.00</span>
         </h3>
     </div>
     <div class="container-2">
-        <div class="card border">
+        <div class="card ">
             <p>INCOME</p>
             <p class="green" id="income">$0.00</p>
         </div>
+        <span class="border"></span>
         <div class="card">
             <p>EXPENSE</p>
             <p class="red" id="expense">$0.00</p>
@@ -30,23 +31,25 @@
     </div>
     <hr>
     <div>
-        <p>Add new transaction</p>
+        <p class="header">New Transaction</p>
+        <form id="form">
+            <label for="text" >Transaction Name</label><br>
+            <input type="text" id="text"
+                   onfocus="this.value=''"
+                   placeholder="Enter Transaction Name..."
+            ><br>
+            <label for="amount" >Amount <br><sub>
+                (<span class="green">positive=> income </span>,
+                <span class="red">negative=> expense</span> )</sub></label><br>
+            <input type="number" id="amount"
+                   id="amount"
+                   onfocus="this.value=''"
+                   placeholder="Enter Transaction Value..."
+            ><br>
+            <button class="btn">Add transaction</button>
+        </form>
     </div>
-    <hr>
-    <form id="form">
-        <label for="text" >Transaction Name</label><br>
-        <input type="text" id="text"
-               onfocus="this.value=''"
-               placeholder="Enter Transaction Name..."
-        ><br>
-        <label for="amount" >Amount <br><sub>(negative=> expense, positive=> income)</sub></label><br>
-        <input type="number" id="amount"
-               id="amount"
-               onfocus="this.value=''"
-               placeholder="Enter Transaction Value..."
-        ><br>
-        <button class="btn">Add transaction</button>
-    </form>
+
 
 </div>
 <script src="main.js"></script>

@@ -5,31 +5,41 @@ body{
     margin: 10px;
     font-family: monospace;
     font-size: 150%;
+    border-radius: 25px;
+    background-image: url("https://acegif.com/wp-content/gifs/raining-money-38.gif");
+    background-color: #f6f6f6;
+    background-size: 850px;
+
 }
 .container{
     background-color: #f6f6f6;
-    border: 1px solid gray;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 25px;
     padding: 10px;
     position: absolute;
     left: 35%;
-    top: 1%;
+    top: 5%;
     width: 500px;
 }
 .container-2{
     display: flex;
     width: 100%;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
 }
 .card{
     width: 50%;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    height: 100%;
 }
-
 .card p{
     text-align: center;
 }
 .border{
-    border-right: 1px dashed darkgray;
+    height: 80px;
+    border-right: 1px solid #cccccc;
+    align-self: center;
 }
 .center{
     text-align: center;
@@ -46,12 +56,12 @@ input[type=text],input[type=number], select {
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 25px;
     box-sizing: border-box;
     outline: none;
 
 }
-input[type=text]:focus {
+input[type=text]:focus,input[type=number]:focus {
     border: 3px solid blue;
 }
 
@@ -64,13 +74,16 @@ input[type=text]:focus {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 2s ease-out 100ms,font-weight 0.2s ease-in-out 100ms;
+
+}
+.btn:hover {
+    background-color: #8f46fc;
+    font-weight: bold;
 }
 
-input[type=submit]:hover {
-    background-color: #7664d4;
-}
 hr{
     border-top: 1px solid #d8d8d8;
 }
@@ -91,6 +104,33 @@ hr{
     background-color: rgb(181, 232, 175);
     cursor: pointer;
 }
+.header {
+    width: 100%;
+    font-size: 21px;
+    border: 2px solid blue;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 14px 20px;
+    border-radius: 25px;
+    text-align: center;
+    font-family: Arial;
+}
+.delete-btn{
+    border-radius: 50%;
+    border: 1px solid red;
+    float: left;
+    margin-right: 5px;
+}
+.delete-btn:hover{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+.list{
+    list-style-type: none;
+    padding-left: 5px;
+
+}
+
 
 
 
