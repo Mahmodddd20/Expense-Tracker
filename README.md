@@ -1,3 +1,3 @@
 # Expense-Tracker
-![Screenshot](img.png)![Screenshot](img2.png)
+![Screenshot](image.png)![Screenshot](image2.png)
 
