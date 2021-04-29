@@ -8,16 +8,10 @@ const amount = document.getElementById("amount");
 const table = document.getElementById("table");
 
 
-// Get transactions from local storage
-const localStorageTransactions = JSON.parse(
-    localStorage.getItem("transactions")
-);
-
-let transactions =
-    localStorage.getItem("transactions") !== null ? localStorageTransactions : [];
+const localStorageTransactions = JSON.parse(localStorage.getItem("transactions"));
+let transactions = localStorage.getItem("transactions") !== null ? localStorageTransactions : [];
 
 
-// Add transaction
 function addTransaction(e) {
     e.preventDefault();
 
@@ -36,11 +30,8 @@ function addTransaction(e) {
         };
 
         transactions.push(transaction);
-
         addTransactionDOM(transaction);
-
         updateValues();
-
         updateLocalStorage();
 
         text.value = "";
@@ -48,83 +39,61 @@ function addTransaction(e) {
     }
 }
 
-// Generate random ID
 function generateID() {
     return Math.floor(Math.random() * 100000000);
 }
 
-// Transactions history
 function addTransactionDOM(transaction) {
-    // Get sign
     const sign = transaction.amount < 0 ? "-" : "+";
-
-    // const item = document.createElement("li");
     const item = document.createElement("tr");
 
-
-
     item.innerHTML = `
-    <td><span class="delete-btn" onclick="removeTransaction(${
-        transaction.id
-    })">X</span></td>
-    <td>${transaction.text}</td> <td>${sign}</td><td>${Math.abs(
-        transaction.amount
-    )}</td> 
-  `;
+    <td>
+        <span class="delete-btn" onclick="removeTransaction(${transaction.id})">X</span>
+    </td>
+    <td>${transaction.text}</td> 
+    <td>${sign}</td>
+    <td>${Math.abs(transaction.amount)}</td>`;
 
     tbody.appendChild(item);
     table.classList.remove("hide");
     table.classList.add("show");
-
 }
 
-// Update the balance, inflow and outflow
 function updateValues() {
-
     const amounts = transactions.map((transaction) => transaction.amount);
-
-    const total = amounts.reduce((bal, value) => (bal += value), 0).toFixed(2);
-
+    const total = amounts.reduce((bal, value) => (bal += value), 0);
     const income = amounts
         .filter((value) => value > 0)
-        .reduce((bal, value) => (bal += value), 0)
-        .toFixed(2);
-
+        .reduce((bal, value) => (bal += value), 0);
     const expense =
         amounts
             .filter((value) => value < 0)
-            .reduce((bal, value) => (bal += value), 0) * -(1).toFixed(2);
+            .reduce((bal, value) => (bal += value), 0) * -(1);
 
     balance.innerText = `$${total}`;
     inflow.innerText = `$${income}`;
     outflow.innerText = `$${expense}`;
 }
 
-// Remove transaction by ID
 function removeTransaction(id) {
     transactions = transactions.filter((transaction) => transaction.id !== id);
     table.classList.remove("show");
     table.classList.add("hide");
 
-
     updateLocalStorage();
-
     start();
 }
 
-// Update local storage transactions
 function updateLocalStorage() {
     localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
-// Start app
 function start() {
     tbody.innerHTML = "";
     transactions.forEach(addTransactionDOM);
     updateValues();
-
 }
 
 start();
-
 form.addEventListener("submit", addTransaction);
