@@ -259,6 +259,19 @@ tr:nth-child(odd) td{
     overflow-y:auto;
     max-height: 200px;
 }
+.balance {
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 25px;
+    text-align: center;
+    background-color: white;
+    padding: 5px;
+    margin-bottom: 20px;
+
+}
+#balance{
+    color: #8f46fc;
+}
 
 
 
