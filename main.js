@@ -59,7 +59,6 @@ function addTransactionDOM(transaction) {
     table.classList.remove("hide");
     table.classList.add("show");
 }
-
 function updateValues() {
     const amounts = transactions.map((transaction) => transaction.amount);
     const total = amounts.reduce((bal, value) => (bal += value), 0);
